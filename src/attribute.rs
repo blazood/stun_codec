@@ -334,6 +334,13 @@ impl<T: Attribute> LosslessAttribute<T> {
         }
     }
 
+    pub fn from_raw(inner: RawAttribute) -> Self {
+        LosslessAttribute::Unknown {
+            inner,
+            padding: None,
+        }
+    }
+
     pub fn as_known(&self) -> Option<&T> {
         match self {
             LosslessAttribute::Known { inner, .. } => Some(inner),

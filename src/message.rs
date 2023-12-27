@@ -216,6 +216,11 @@ impl<A: Attribute> Message<A> {
     pub fn add_attribute(&mut self, attribute: A) {
         self.attributes.push(LosslessAttribute::new(attribute));
     }
+
+    /// Adds the given raw attribute to the tail of the attributes in the message.
+    pub fn add_raw_attribute(&mut self, attribute: RawAttribute) {
+        self.attributes.push(LosslessAttribute::from_raw(attribute));
+    }
 }
 
 /// STUN message of which [`MessageDecoder`] could not decode the attribute part.
